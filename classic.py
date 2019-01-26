@@ -83,17 +83,27 @@ class LIVE():
             self.printGraf (self.pol)
             time.sleep(1)
 
-a = [
-    [3,1,3,1,3,1,3],
-    [1,3,1,3,1,3,1],
-    [3,1,3,1,3,1,3],
-    [1,3,1,3,1,3,1],
-    [3,1,3,1,3,1,3],
-    [1,3,1,3,1,3,1],
-    [3,1,3,1,3,1,3],
-]
 
-b = LIVE(pol=a)
-#b = LIVE(a=5,b=5)
+if __name__ == '__main__':    
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("params",help="two comma separated integers - the width and height or the name of the text file")
+    parser.add_argument("--file",'-f', help="if you use file name",action="store_true")
+    args = parser.parse_args()
+    if args.file:
+        a = []
+        nums = list(map(str,list(range(4))))
+        with open(args.params, 'r') as file:  
+            for i in file.readlines():
+                n = []
+                for j in i:
+                    if j in nums:
+                        n.append(int(j))
+                a.append(n)
+                n=[]
+        b = LIVE(pol=a)
+    else:
+        A,B = args.params.split(',')          
+        b = LIVE(a=A,b=B)  
 
-b.play()
+    b.play()

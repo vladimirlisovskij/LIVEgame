@@ -5,7 +5,6 @@ from colorama import Back,Fore,init,Style
 
 init()
 
-
 class LIVE():
     def __init__(self,a=None,b=None,pol=None):
         if a!=None and b!=None:
@@ -80,18 +79,27 @@ class LIVE():
             self.printGraf (self.pol)
             time.sleep(1)
 
-a = [
-    [3,1,3,1,3,1,3],
-    [1,3,1,3,1,3,1],
-    [3,1,3,1,3,1,3],
-    [1,3,1,3,1,3,1],
-    [3,1,3,1,3,1,3],
-    [1,3,1,3,1,3,1],
-    [3,1,3,1,3,1,3],
-]
-a = np.array(a)
+if __name__ == '__main__':    
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("params",help="two comma separated integers - the width and height or the name of the text file")
+    parser.add_argument("--file",'-f', help="if you use file name",action="store_true")
+    args = parser.parse_args()
+    if args.file:
+        a = []
+        nums = list(map(str,list(range(4))))
+        with open(args.params, 'r') as file:  
+            for i in file.readlines():
+                n = []
+                for j in i:
+                    if j in nums:
+                        n.append(int(j))
+                a.append(n)
+                n=[]
+        a = np.array(a)
+        b = LIVE(pol=a)
+    else:
+        A,B = args.params.split(',')          
+        b = LIVE(a=A,b=B)  
 
-b = LIVE(pol=a)
-#b = LIVE(a=15,b=15)
-
-b.play()
+    b.play()
