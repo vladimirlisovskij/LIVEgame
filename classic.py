@@ -23,7 +23,10 @@ class LIVE():
 
         i = x - 1
         j = y - 1
-        n=-1
+        if self.pol[x,y] == cr:
+            n=-1
+        else:
+            n = 0
         for _ in range(3):
             if i >= 0 and i < self.a:
                 for __ in range(3):
