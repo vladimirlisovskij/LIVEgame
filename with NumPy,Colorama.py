@@ -39,13 +39,13 @@ class LIVE():
         for i in range(self.a):
             for j in range(self.b):
                 if x[i,j] == 0:
-                    print (Fore.BLACK + Back.BLACK  + str(x[i,j]),end =' ')
+                    print (Fore.BLACK + Back.BLACK + str(x[i,j]),end =' ')
                 elif x[i,j] == 1:
-                    print (Fore.RED + Back.RED  +  str(x[i,j]) ,end =' ')
+                    print (Fore.RED + Back.RED + str(x[i,j]) ,end =' ')
                 elif x[i,j] == 2:
-                    print (Fore.YELLOW + Back.YELLOW  +  str(x[i,j]),end =' ')
+                    print (Fore.YELLOW + Back.YELLOW + str(x[i,j]),end =' ')
                 else:
-                    print (Fore.BLUE + Back.BLUE +  str(x[i,j]),end =' ')
+                    print (Fore.BLUE + Back.BLUE + str(x[i,j]),end =' ')
                 print (Style.RESET_ALL,end = '')
             print()
 
